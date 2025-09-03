@@ -16,7 +16,7 @@ spec:
     spec:
       containers: 
       - name: mate-server
-        image: busybox
+        image: busyboxplus:curl
         resources:
           requests: 
             cpu: "100m"
@@ -27,4 +27,4 @@ spec:
         ports:
         - containerPort: 80
           hostPort: 30080
-        command: ["sh", "-c", "while true; do echo Hello from mate-server; sleep 10; done"]
+        command: ["sh", "-c", "while true; do curl http://todoapp-service.mateapp.svc:8080; sleep 5; done"]
